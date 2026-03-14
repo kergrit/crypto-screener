@@ -14,6 +14,8 @@
 
 ## Project Structure
 ```
+bin/
+  crypto-screener.mjs   — CLI for background server (start/stop/restart/status/update/logs)
 src/
   App.jsx              — Main dashboard layout, market summary, theme switcher
   main.jsx             — Entry point
@@ -56,5 +58,13 @@ src/
 - Signal colors (emerald, green, red, orange, amber) remain hardcoded intentionally
 
 ## Commands
-- `npm run dev` — Start dev server
+- `npm run dev` — Start dev server (development with HMR)
 - `npm run build` — Production build
+- `crypto-screener start` — Build and serve on port 9212 as background process
+- `crypto-screener stop` — Stop background server
+- `crypto-screener restart` — Restart server (stop + start)
+- `crypto-screener status` — Show server status (running/stopped, port, uptime)
+- `crypto-screener update` — Pull, install, rebuild, restart
+- `crypto-screener logs` — Tail server logs
+- `crypto-screener --version` — Show version
+- Install CLI globally: `npm link` (from project root)
