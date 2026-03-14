@@ -1,0 +1,247 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+@keyframes flash-green {
+  0% { background-color: rgba(34, 197, 94, 0.3); }
+  100% { background-color: transparent; }
+}
+@keyframes flash-red {
+  0% { background-color: rgba(239, 68, 68, 0.3); }
+  100% { background-color: transparent; }
+}
+.flash-up { animation: flash-green 0.5s ease-out; }
+.flash-down { animation: flash-red 0.5s ease-out; }
+
+/* ========= Theme Variables ========= */
+
+/* Classic — preserves the original dark flat look */
+[data-theme="classic"], :root {
+  --bg-page: #030712;
+  --bg-page-gradient: none;
+  --glass-bg: rgba(31, 41, 55, 0.5);
+  --glass-border: rgba(55, 65, 81, 0.3);
+  --glass-blur: 0px;
+  --glass-shadow: none;
+  --card-bg: rgba(17, 24, 39, 0.5);
+  --card-border: rgba(55, 65, 81, 0.5);
+  --card-hover: rgba(31, 41, 55, 0.5);
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent: #3b82f6;
+  --accent-glow: rgba(59, 130, 246, 0.2);
+  --accent-hover: #2563eb;
+  --row-border: rgba(31, 41, 55, 0.5);
+  --row-hover: rgba(31, 41, 55, 0.5);
+  --header-bg: rgba(3, 7, 18, 0.8);
+  --modal-bg: #111827;
+  --modal-border: rgba(55, 65, 81, 0.5);
+  --modal-backdrop: rgba(0, 0, 0, 0.7);
+  --green: #4ade80;
+  --red: #f87171;
+  --amber: #fbbf24;
+}
+
+/* Dark Glass — Apple Liquid Glass: heavy blur, specular highlights, prismatic edges */
+[data-theme="dark-glass"] {
+  --bg-page: #050a18;
+  --bg-page-gradient: radial-gradient(ellipse at 30% 20%, rgba(56,189,248,0.12) 0%, transparent 50%),
+                       radial-gradient(ellipse at 70% 80%, rgba(168,85,247,0.10) 0%, transparent 50%),
+                       radial-gradient(ellipse at 50% 50%, rgba(59,130,246,0.06) 0%, transparent 70%);
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-blur: 28px;
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --glass-highlight: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.05) 100%);
+  --glass-edge: 1px solid rgba(255, 255, 255, 0.18);
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --card-border: rgba(255, 255, 255, 0.10);
+  --card-hover: rgba(255, 255, 255, 0.10);
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent: #38bdf8;
+  --accent-glow: rgba(56, 189, 248, 0.25);
+  --accent-hover: #7dd3fc;
+  --row-border: rgba(255, 255, 255, 0.06);
+  --row-hover: rgba(255, 255, 255, 0.06);
+  --header-bg: rgba(5, 10, 24, 0.5);
+  --modal-bg: rgba(10, 15, 30, 0.75);
+  --modal-border: rgba(255, 255, 255, 0.15);
+  --modal-backdrop: rgba(0, 0, 0, 0.5);
+  --green: #4ade80;
+  --red: #f87171;
+  --amber: #fbbf24;
+}
+
+/* Deep Blue — galaxy gradient with prismatic purple glass */
+[data-theme="deep-blue"] {
+  --bg-page: #080b20;
+  --bg-page-gradient: radial-gradient(ellipse at 20% 0%, rgba(139,92,246,0.18) 0%, transparent 50%),
+                       radial-gradient(ellipse at 80% 100%, rgba(59,130,246,0.12) 0%, transparent 50%),
+                       radial-gradient(ellipse at 50% 50%, rgba(168,85,247,0.06) 0%, transparent 80%),
+                       linear-gradient(160deg, #080b20 0%, #130828 40%, #0d1033 100%);
+  --glass-bg: rgba(139, 92, 246, 0.08);
+  --glass-border: rgba(167, 139, 250, 0.25);
+  --glass-blur: 32px;
+  --glass-shadow: 0 8px 40px rgba(139, 92, 246, 0.15),
+                  inset 0 1px 0 rgba(167, 139, 250, 0.15);
+  --glass-highlight: linear-gradient(135deg, rgba(167,139,250,0.15) 0%, transparent 35%, transparent 65%, rgba(96,165,250,0.08) 100%);
+  --glass-edge: 1px solid rgba(167, 139, 250, 0.22);
+  --card-bg: rgba(139, 92, 246, 0.05);
+  --card-border: rgba(167, 139, 250, 0.18);
+  --card-hover: rgba(139, 92, 246, 0.14);
+  --text-primary: #ede9fe;
+  --text-secondary: #a78bfa;
+  --text-muted: rgba(139, 92, 246, 0.6);
+  --accent: #a78bfa;
+  --accent-glow: rgba(167, 139, 250, 0.3);
+  --accent-hover: #c4b5fd;
+  --row-border: rgba(139, 92, 246, 0.10);
+  --row-hover: rgba(139, 92, 246, 0.10);
+  --header-bg: rgba(8, 11, 32, 0.5);
+  --modal-bg: rgba(8, 11, 32, 0.8);
+  --modal-border: rgba(167, 139, 250, 0.25);
+  --modal-backdrop: rgba(0, 0, 0, 0.6);
+  --green: #4ade80;
+  --red: #f87171;
+  --amber: #fbbf24;
+}
+
+/* Light Glass — Apple-style frosted white glass with soft prismatic tint */
+[data-theme="light-glass"] {
+  --bg-page: #f2f5fc;
+  --bg-page-gradient: radial-gradient(ellipse at 25% 0%, rgba(147,197,253,0.25) 0%, transparent 50%),
+                       radial-gradient(ellipse at 75% 100%, rgba(196,181,253,0.20) 0%, transparent 50%),
+                       linear-gradient(160deg, #f2f5fc 0%, #eef1fa 50%, #f5f2ff 100%);
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.85);
+  --glass-blur: 24px;
+  --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.06),
+                  0 1px 3px rgba(0, 0, 0, 0.04),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  --glass-highlight: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.2) 40%, transparent 60%, rgba(147,197,253,0.08) 100%);
+  --glass-edge: 1px solid rgba(255, 255, 255, 0.9);
+  --card-bg: rgba(255, 255, 255, 0.45);
+  --card-border: rgba(200, 210, 235, 0.6);
+  --card-hover: rgba(255, 255, 255, 0.75);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --accent: #2563eb;
+  --accent-glow: rgba(37, 99, 235, 0.15);
+  --accent-hover: #1d4ed8;
+  --row-border: rgba(200, 210, 235, 0.4);
+  --row-hover: rgba(255, 255, 255, 0.4);
+  --header-bg: rgba(242, 245, 252, 0.6);
+  --modal-bg: rgba(255, 255, 255, 0.85);
+  --modal-border: rgba(200, 210, 235, 0.6);
+  --modal-backdrop: rgba(0, 0, 0, 0.2);
+  --green: #16a34a;
+  --red: #dc2626;
+  --amber: #d97706;
+}
+
+/* ========= Liquid Glass Utility ========= */
+
+/* Base glass panel — heavy blur + specular highlight + prismatic edge */
+.glass-panel {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.8);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.8);
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Specular highlight — light reflection on top-left */
+[data-theme="dark-glass"] .glass-panel::before,
+[data-theme="deep-blue"] .glass-panel::before,
+[data-theme="light-glass"] .glass-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--glass-highlight);
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 0;
+}
+
+/* Prismatic edge glow — rainbow refraction along the top edge */
+[data-theme="dark-glass"] .glass-panel::after,
+[data-theme="deep-blue"] .glass-panel::after,
+[data-theme="light-glass"] .glass-panel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(251, 191, 36, 0.3),
+    rgba(244, 114, 182, 0.4),
+    rgba(168, 85, 247, 0.4),
+    rgba(96, 165, 250, 0.4),
+    rgba(52, 211, 153, 0.3),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ensure content sits above pseudo-elements */
+.glass-panel > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Glass transition for smooth theme switching */
+.glass-panel,
+.glass-panel::before,
+.glass-panel::after {
+  transition: background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+/* Animated ambient glow orbs behind the page (glass themes only) */
+[data-theme="dark-glass"] body::before,
+[data-theme="deep-blue"] body::before {
+  content: '';
+  position: fixed;
+  top: -20%;
+  left: -10%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(56,189,248,0.06) 0%, transparent 70%);
+  animation: float-orb 20s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-theme="dark-glass"] body::after,
+[data-theme="deep-blue"] body::after {
+  content: '';
+  position: fixed;
+  bottom: -20%;
+  right: -10%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(circle, rgba(168,85,247,0.05) 0%, transparent 70%);
+  animation: float-orb 25s ease-in-out infinite alternate-reverse;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes float-orb {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(5%, 8%) scale(1.1); }
+  100% { transform: translate(-3%, -5%) scale(0.95); }
+}
